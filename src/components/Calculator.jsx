@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import React,{useState} from 'react'
-import Header1 from './Header1'
+import MainHeader from './MainHeader'
 import { Link } from 'react-router-dom'
 
 const RecommendContainer=styled.div`
@@ -109,7 +109,7 @@ function Calculator({...loginUserProps}) {
  
     return (
       <RecommendContainer>
-        <Header1 {...loginUserProps} ></Header1>
+        <MainHeader {...loginUserProps} ></MainHeader>
         <RecommendNameBox>청약 추천</RecommendNameBox>
         <RecommendMenu>
           <Nav></Nav>

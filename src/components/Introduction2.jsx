@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import React,{useState} from 'react'
-import Header1 from './Header1'
+import MainHeader from './MainHeader'
 import { Link } from 'react-router-dom'
 
 const IntroductionContainer=styled.div`
@@ -110,7 +110,7 @@ function Nav(){
 function Introduction({...loginUserProps}) {
     return (
       <IntroductionContainer>
-        <Header1 {...loginUserProps} ></Header1>
+        <MainHeader {...loginUserProps} ></MainHeader>
         <IntroductionNameBox>청약 소개</IntroductionNameBox>
         <IntroductionMenu>
         <Nav></Nav>

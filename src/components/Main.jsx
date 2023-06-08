@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import React,{useState} from 'react'
-import Header1 from './Header1'
+import MainHeader from './MainHeader'
 import first_main from '../assets/first_main.png'
 
 const MainContainer=styled.div`
@@ -76,7 +76,7 @@ function Main({...loginUserProps}) {
 
   return (
     <MainContainer>
-      <Header1 {...loginUserProps} ></Header1>
+      <MainHeader {...loginUserProps} ></MainHeader>
       <Slide>
         <SlideImg imgInfo={imgInfo[id]}></SlideImg>
         <SlideText textInfo={textInfo[id]}></SlideText>

@@ -60,13 +60,6 @@ const LoginUl = styled.ul`
   }
 `;
 
-const Bar = styled.hr`
-  border:none;
-  height:1px;
-  background-color: #e6e6e6;
-  width: 100%;
-`;
-
 function LogoFunc(){
   return (
     <LogoLink>
@@ -113,7 +106,6 @@ function MainHeader({ loginId, loginState, loginName }) {
     <Nav></Nav>
     <LoginOut loginId={loginId} ></LoginOut>
     </Header>
-    <Bar></Bar>
     </>
   );
 }
