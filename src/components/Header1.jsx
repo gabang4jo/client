@@ -15,7 +15,7 @@ const LogoLink = styled.div`
   font-weight: 700;
   font-size: 35px;
   text-align: center;
-  color: #000000;
+  color: #333333;
   text-decoration: none;
   }
 `
@@ -35,7 +35,7 @@ const NavUl = styled.ul`
     letter-spacing: 0em;
     text-align: center;
 
-    color:#000000;
+    color:#333333;
     text-decoration: none;
   }
 
@@ -55,7 +55,7 @@ const LoginUl = styled.ul`
     letter-spacing: 0em;
     text-align: center;
 
-    color: #000000;
+    color: #333333;
     text-decoration: none;
   }
 `;
@@ -74,7 +74,7 @@ function Nav(){
     <li><Link to="/search" className="navigation__link">청약 검색</Link></li>
     <li><Link to="/calendar" className="navigation__link">청약 캘린더</Link></li>
     <li><Link to="/map" className="navigation__link">주택 실거래가</Link></li>
-    <li><Link to="/recommend" className="navigation__link">청약 추천</Link></li>
+    <li><Link to="/recommend/calculator" className="navigation__link">청약 추천</Link></li>
   </NavUl>
 }
 

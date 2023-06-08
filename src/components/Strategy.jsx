@@ -3,14 +3,14 @@ import React,{useState} from 'react'
 import Header1 from './Header1'
 import { Link } from 'react-router-dom'
 
-const IntroductionContainer=styled.div`
+const RecommendContainer=styled.div`
     display: flex;
     flex-direction: column;
-    width: 100vw;
-    height: 100vh;
+    width: 1440;
+    height: 1024;
 `;
 
-const IntroductionNameBox=styled.div`
+const RecommendNameBox=styled.div`
   color: white;
   background-color: #3964E5;
   height: 200px;
@@ -21,7 +21,7 @@ const IntroductionNameBox=styled.div`
   font-size: 50px;
 `;
 
-const IntroductionMenu=styled.div`
+const RecommendMenu=styled.div`
 li { 
   display: table-cell; 
   position: relative; 
@@ -100,24 +100,23 @@ const Bar = styled.hr`
 
 function Nav(){
   return <NavUl>
-    <li class='here'><Link to="/introduction" className="navigation__link_now">청약주택</Link></li>
-    <li><Link to="/introduction/1" className="navigation__link">청약통장</Link></li>
-    <li><Link to="/introduction/2" className="navigation__link">청약자격</Link></li>
-    <li><Link to="/introduction/3" className="navigation__link">청약신청방법</Link></li>
+    <li><Link to="/recommend/calculator" className="navigation__link">가점계산</Link></li>
+    <li><Link to="/recommend/strategy" className="navigation__link_now">추천전략</Link></li>
   </NavUl>
 }
 
-function Introduction({...loginUserProps}) {
+function Strategy({...loginUserProps}) {
+ 
     return (
-      <IntroductionContainer>
+      <RecommendContainer>
         <Header1 {...loginUserProps} ></Header1>
-        <IntroductionNameBox>청약 소개</IntroductionNameBox>
-        <IntroductionMenu>
+        <RecommendNameBox>청약 추천</RecommendNameBox>
+        <RecommendMenu>
           <Nav></Nav>
           <Bar></Bar>
-        </IntroductionMenu>
-      </IntroductionContainer>
+        </RecommendMenu>
+      </RecommendContainer>
     );
 }
     
-export default Introduction;
+export default Strategy;

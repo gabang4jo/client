@@ -1,12 +1,12 @@
 import React from 'react'
 import GlobalStyle from '../components/GlobalStyle';
-import Recommend from '../components/Recommend';
+import Calculator from '../components/Calculator';
 
 const RecommendPage = ({...hookProps}) => {
     return (
         <div>
             <GlobalStyle />
-            <Recommend {...hookProps} />
+            <Calculator {...hookProps} />
         </div>
     )
 }

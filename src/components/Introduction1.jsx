@@ -100,8 +100,8 @@ const Bar = styled.hr`
 
 function Nav(){
   return <NavUl>
-    <li class='here'><Link to="/introduction" className="navigation__link_now">청약주택</Link></li>
-    <li><Link to="/introduction/1" className="navigation__link">청약통장</Link></li>
+    <li class='here'><Link to="/introduction" className="navigation__link">청약주택</Link></li>
+    <li><Link to="/introduction/1" className="navigation__link_now">청약통장</Link></li>
     <li><Link to="/introduction/2" className="navigation__link">청약자격</Link></li>
     <li><Link to="/introduction/3" className="navigation__link">청약신청방법</Link></li>
   </NavUl>
@@ -113,8 +113,8 @@ function Introduction({...loginUserProps}) {
         <Header1 {...loginUserProps} ></Header1>
         <IntroductionNameBox>청약 소개</IntroductionNameBox>
         <IntroductionMenu>
-          <Nav></Nav>
-          <Bar></Bar>
+        <Nav></Nav>
+        <Bar></Bar>
         </IntroductionMenu>
       </IntroductionContainer>
     );
