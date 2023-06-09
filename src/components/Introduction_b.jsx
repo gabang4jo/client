@@ -264,7 +264,7 @@ function Introduction({...loginUserProps}) {
             <div className='first_content'>
               <ul>
                 <li>
-                  <img src={icon1} alt="85m2 이하"></img>
+                  <img src={icon1} alt="국민주택 아이콘"></img>
                   <p className='house_name'>국민주택</p>
                   <div className='mt_10'></div>
                   <span className='sub_chk_blue'>
@@ -276,7 +276,7 @@ function Introduction({...loginUserProps}) {
                   </span>
                 </li>
                 <li>
-                  <img src={icon2} alt="85m2 이하"></img>
+                  <img src={icon2} alt="민영주택 아이콘"></img>
                   <p className='house_name'>민영주택</p>
                   <div className='mt_10'></div>
                   <span className='sub_chk_blue'>

@@ -53,7 +53,7 @@ function SlideText(props){
     "height":"200px",
     "flexDirection": "column",
     "justifyContent" : "center",
-    "backgroundColor": "#EDCB98"
+    "backgroundColor": "#3964E5"
   }
   return <div style={textboxstyle}>
     <BigText>{props.textInfo.t1}</BigText>

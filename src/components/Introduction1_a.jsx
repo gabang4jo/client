@@ -2,12 +2,15 @@ import styled from 'styled-components'
 import React,{useState} from 'react'
 import MainHeader from './MainHeader'
 import { Link } from 'react-router-dom'
+import bbook_o from "../assets/bbook_o.png"
+import bbook_x from "../assets/bbook_x.png"
 
 const IntroductionContainer=styled.div`
     display: flex;
     flex-direction: column;
     width: 100vw;
     height: 100vh;
+    overflow-x: hidden;
 `;
 
 const IntroductionNameBox=styled.div`
@@ -143,6 +146,108 @@ const NavUl = styled.ul`
   }
 `;
 
+const IntroductionContent = styled.div`
+  height: 500px;
+
+  .content_name {
+    margin-left: 100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  .content_tip {
+    margin-left: 100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 17px;
+    font-weight: 500;
+  }
+
+  .content_box {
+    border: solid 1px #c9c9c9;
+    background-color: #f9f9f9;
+    color: #0768c9;
+    text-align: center;
+    line-height: 30px;
+    padding: 10px;
+    height: 60px;
+    width: 90vw;
+    margin: 0 auto;
+  }
+
+  .mt_30 {
+    margin-top: 30px;
+  }
+
+  .first_content {
+    border-top: 2px solid #3964E5;
+    border-bottom: 1px solid #c9c9c9;
+    margin: auto;
+    padding: 60px 0;
+    height: 300px;
+    width: 90vw;
+
+    ul {
+      display:flex;
+      list-style: none;
+
+      li:first-child{
+        border-left : none;
+      }
+
+      li{
+        width: 50%;
+        display: table-cell;
+        text-align: center;
+        border-left : 1px solid #c9c9c9;
+      }
+    }
+
+    ul.bbook_kind > li.join_confirm b {
+      background: #1964dc;
+    }
+
+    ul.bbook_kind > li b {
+      font-size: 1rem;
+      color: #ffffff;
+      background: #db4f18;
+      padding: 3px 5px;
+      border-radius: 4px;
+    }
+
+    ul.bbook_kind > li.join_confirm h5 {
+      color: #1964dc;
+    }
+
+    ul.bbook_kind > li.join_confirm span {
+      color: #1964dc;
+    }
+
+    ul.bbook_kind > li h5 {
+      font-size: 1.375rem;
+      color: #888888;
+      margin-top: 10px;
+    }
+
+    ul.bbook_kind > li span {
+      font-size: 1rem;
+      color: #db4f18;
+    }
+
+    ul.bbook_kind > li.join_confirm p {
+      color: #333333;
+    }
+
+    ul.bbook_kind > li p {
+      color: #888888;
+      font-size: 1rem;
+      font-weight: 550;
+    }
+  }
+`;
+
 const Bar = styled.hr`
   border:none;
   height:1px;
@@ -182,8 +287,8 @@ function Introduction({...loginUserProps}) {
     return (
       <IntroductionContainer>
         <MainHeader {...loginUserProps} ></MainHeader>
-          <IntroductionNameBox>청약 소개</IntroductionNameBox>
-          <IntroductionBody>
+        <IntroductionNameBox>청약 소개</IntroductionNameBox>
+        <IntroductionBody>
           <IntroductionMenu>
           <Nav></Nav>
           <Bar></Bar>
@@ -195,6 +300,46 @@ function Introduction({...loginUserProps}) {
             <Link to="/introduction/1/c" className="navigation__link"><Box2>청약저축</Box2></Link>
             <Link to="/introduction/1/d" className="navigation__link"><Box2>청약예금ㆍ청약부금</Box2></Link>
           </IntroductionSubMenu>
+          <div className='menu_name_sub'>■ 청약통장 종류</div>
+          <IntroductionContent>
+            <div className='mt_30'></div>
+            <div className='first_content'>
+              <ul className='bbook_kind'>
+                <li class="join_confirm">
+                  <b>가입가능</b>
+                  <h5>주택청약종합저축<br/>
+                    <span>(농협, 신한, 우리, 하나, 기업,<br/>국민, 대구, 부산, 경남)</span>
+                  </h5>
+                  <img src={bbook_o} alt=""></img>
+                  <p>국민주택과 민영주택을<br/> 공급받기 위한 청약통장</p>
+                </li>
+                <li>
+                  <b>가입불가</b>
+                  <h5>청약저축<br/>
+                    <span>신규가입 중단<br/>(15년 9월 1일 부터)</span>
+                  </h5>
+                  <img src={bbook_x} alt=""></img>
+                  <p>국민주택을 공급받기 위한<br/>청약통장</p>
+                </li>
+                <li>
+                  <b>가입불가</b>
+                  <h5>청약예금<br/>
+                    <span>신규가입 중단<br/>(15년 9월 1일 부터)</span>
+                  </h5>
+                  <img src={bbook_x} alt=""></img>
+                  <p>민영주택을 공급받기 위한<br/>청약통장</p>
+                </li>
+                <li>
+                  <b>가입불가</b>
+                  <h5>청약부금<br/>
+                    <span>신규가입 중단<br/>(15년 9월 1일 부터)</span>
+                  </h5>
+                  <img src={bbook_x} alt=""></img>
+                  <p>주거전용면적 85m2 이하의<br/>민영주택을 공급받기 위한<br/>청약통장</p>
+                </li>
+              </ul>
+            </div>
+          </IntroductionContent>
         </IntroductionBody>
       </IntroductionContainer>
     );

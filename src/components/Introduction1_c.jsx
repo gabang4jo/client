@@ -2,12 +2,15 @@ import styled from 'styled-components'
 import React,{useState} from 'react'
 import MainHeader from './MainHeader'
 import { Link } from 'react-router-dom'
+import bbook_user from '../assets/bbook_user.png'
+import bbook_money from '../assets/bbook_money.png'
 
 const IntroductionContainer=styled.div`
     display: flex;
     flex-direction: column;
     width: 100vw;
     height: 100vh;
+    overflow-x: hidden;
 `;
 
 const IntroductionNameBox=styled.div`
@@ -36,6 +39,13 @@ const IntroductionBody = styled.div`
     margin-top: 30px;
     font-size: 22px;
     font-weight: 550;
+  }
+
+  .menu_intro {
+    margin-left: 80px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 500;
   }
 `;
 
@@ -104,6 +114,84 @@ const IntroductionSubMenu = styled.div`
     background-color: #3964E5;
     color: #ffffff;
     transition: ease 0.4s;
+  }
+`;
+
+const IntroductionContent = styled.div`
+  height: 500px;
+
+  .content_name {
+    margin-left: 100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  .content_tip {
+    margin-left: 100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 17px;
+    font-weight: 500;
+  }
+
+  .content_box {
+    border: solid 1px #c9c9c9;
+    background-color: #f9f9f9;
+    color: #0768c9;
+    text-align: center;
+    line-height: 30px;
+    padding: 10px;
+    height: 60px;
+    width: 90vw;
+    margin: 0 auto;
+  }
+
+  .mt_30 {
+    margin-top: 30px;
+  }
+
+  .color_gray {
+    color: #555555;
+  }
+
+  .color_red {
+    color: #bd413d;
+  }
+
+  .first_content {
+    border-top: 2px solid #3964E5;
+    border-bottom: 1px solid #c9c9c9;
+    margin: auto;
+    padding: 40px 0;
+    height: 300px;
+    width: 90vw;
+
+    ul{
+      display:flex;
+      list-style: none;
+
+      li:first-child{
+        border-left : none;
+      }
+
+      li{
+        width: 50%;
+        display: table-cell;
+        text-align: center;
+      }
+
+      li.cell{
+        border-left : 1px solid #c9c9c9;
+      }
+    }
+
+    ul li p {
+      color: #1964dc;
+      font-size: 22px;
+      font-weight: 550;
+    }
   }
 `;
 
@@ -182,8 +270,8 @@ function Introduction({...loginUserProps}) {
     return (
       <IntroductionContainer>
         <MainHeader {...loginUserProps} ></MainHeader>
-          <IntroductionNameBox>청약 소개</IntroductionNameBox>
-          <IntroductionBody>
+        <IntroductionNameBox>청약 소개</IntroductionNameBox>
+        <IntroductionBody>
           <IntroductionMenu>
           <Nav></Nav>
           <Bar></Bar>
@@ -195,6 +283,35 @@ function Introduction({...loginUserProps}) {
             <Link to="/introduction/1/c" className="navigation__link_now"><Box1>청약저축</Box1></Link>
             <Link to="/introduction/1/d" className="navigation__link"><Box2>청약예금ㆍ청약부금</Box2></Link>
           </IntroductionSubMenu>
+          <div className='menu_name_sub'>■ 청약저축</div>
+          <div className='menu_intro'>청약저축은 국민주택을 공급받기 위하여 가입하는 저축입니다.</div>
+          <IntroductionContent>
+            <div className='mt_30'></div>
+            <div className='first_content'>
+              <ul>
+                <li>
+                  <img src={bbook_user} alt="가입대상 아이콘"></img>
+                  <p>가입대상</p>
+                  <span class="color_gray">
+                    무주택세대의 세대주 및 (세대주의) 세대구성원으로서 1인<br/>
+                    1계좌 가입 가입가능<br/>
+                    - 무주택세대 : 세대주와 세대구성원이 모두 무주택인 세대 <br/>
+                    - 세대구성원: 세대주의 배우자 및 세대주의 직계존·비속<br/>
+                    (부모, 자녀 등)<br/>
+                    단, 만 19세 미만인 단독 세대주는 가입 불가<br/>
+                  </span>
+                  <span class="color_red">*15월 9월 1일부터 신규가입 중단</span>
+                </li>
+                <li className='cell'>
+                  <img src={bbook_money} alt="금액 아이콘"></img>
+                  <p>적립방법/저축금액</p>
+                  <span class="color_gray">
+                    매월 2만원 이상 50만원 이내에서 자유롭게 납입
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </IntroductionContent>
         </IntroductionBody>
       </IntroductionContainer>
     );
