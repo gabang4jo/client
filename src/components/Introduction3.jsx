@@ -100,8 +100,8 @@ const Bar = styled.hr`
 
 function Nav(){
   return <NavUl>
-    <li><Link to="/introduction" className="navigation__link">청약주택</Link></li>
-    <li><Link to="/introduction/1" className="navigation__link">청약통장</Link></li>
+    <li><Link to="/introduction/0/a" className="navigation__link">청약주택</Link></li>
+    <li><Link to="/introduction/1/a" className="navigation__link">청약통장</Link></li>
     <li><Link to="/introduction/2" className="navigation__link">청약자격</Link></li>
     <li><Link to="/introduction/3" className="navigation__link_now">청약신청방법</Link></li>
   </NavUl>

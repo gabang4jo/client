@@ -3,8 +3,12 @@ import { Route, Routes } from 'react-router-dom'
 import MainPage from './pages/MainPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
-import IntroductionPage from './pages/IntroductionPage';
-import IntroductionPage1 from './pages/IntroductionPage1';
+import IntroductionPageA from './pages/IntroductionPage_a';
+import IntroductionPageB from './pages/IntroductionPage_b';
+import IntroductionPage1A from './pages/IntroductionPage1_a';
+import IntroductionPage1B from './pages/IntroductionPage1_b';
+import IntroductionPage1C from './pages/IntroductionPage1_c';
+import IntroductionPage1D from './pages/IntroductionPage1_d';
 import IntroductionPage2 from './pages/IntroductionPage2';
 import IntroductionPage3 from './pages/IntroductionPage3';
 import SearchPage from './pages/SearchPage';
@@ -43,8 +47,12 @@ function App() {
           <Route path='/' element={<MainPage {...loginUserProps} />}/>
           <Route path='/login' element={<LoginPage {...hookProps} />} />
           <Route path='/signup' element={<SignupPage />} />
-          <Route path='/introduction' element={<IntroductionPage />} />
-          <Route path='/introduction/1' element={<IntroductionPage1 />} />
+          <Route path='/introduction/0/a' element={<IntroductionPageA />} />
+          <Route path='/introduction/0/b' element={<IntroductionPageB />} />
+          <Route path='/introduction/1/a' element={<IntroductionPage1A />} />
+          <Route path='/introduction/1/b' element={<IntroductionPage1B />} />
+          <Route path='/introduction/1/c' element={<IntroductionPage1C />} />
+          <Route path='/introduction/1/d' element={<IntroductionPage1D />} />
           <Route path='/introduction/2' element={<IntroductionPage2 />} />
           <Route path='/introduction/3' element={<IntroductionPage3 />} />
           <Route path='/search' element={<SearchPage />} />

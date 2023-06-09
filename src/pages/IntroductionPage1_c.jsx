@@ -1,8 +1,8 @@
 import React from 'react'
 import GlobalStyle from '../components/GlobalStyle';
-import Introduction from '../components/Introduction'
+import Introduction from '../components/Introduction1_c';
 
-const IntroductionPage = ({...hookProps}) => {
+const IntroductionPage1C = ({...hookProps}) => {
     return (
         <div>
             <GlobalStyle />
@@ -11,4 +11,4 @@ const IntroductionPage = ({...hookProps}) => {
     )
 }
 
-export default IntroductionPage;
+export default IntroductionPage1C;

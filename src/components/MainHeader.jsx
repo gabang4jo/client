@@ -70,7 +70,7 @@ function LogoFunc(){
 
 function Nav(){
   return <NavUl>
-    <li><Link to="/introduction" className="navigation__link">청약 소개</Link></li>
+    <li><Link to="/introduction/0/a" className="navigation__link">청약 소개</Link></li>
     <li><Link to="/search" className="navigation__link">청약 검색</Link></li>
     <li><Link to="/calendar" className="navigation__link">청약 캘린더</Link></li>
     <li><Link to="/map" className="navigation__link">주택 실거래가</Link></li>
