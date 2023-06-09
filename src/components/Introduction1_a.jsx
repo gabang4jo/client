@@ -335,7 +335,7 @@ function Introduction({...loginUserProps}) {
                     <span>신규가입 중단<br/>(15년 9월 1일 부터)</span>
                   </h5>
                   <img src={bbook_x} alt=""></img>
-                  <p>주거전용면적 85m2 이하의<br/>민영주택을 공급받기 위한<br/>청약통장</p>
+                  <p>주거전용면적 85m² 이하의<br/>민영주택을 공급받기 위한<br/>청약통장</p>
                 </li>
               </ul>
             </div>

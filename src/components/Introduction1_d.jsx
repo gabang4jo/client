@@ -340,7 +340,7 @@ function Introduction({...loginUserProps}) {
           </IntroductionSubMenu>
           <div className='menu_name_sub'>■ 청약예금</div>
           <div className='menu_intro'>청약예금은 민영주택을 공급받기 위하여 가입하는 저축입니다.</div>
-          <div className='menu_intro'>청약부금은 주거전용면적 85m2 이하의 민영주택을 공급받기 위하여 가입하는 저축입니다.</div>
+          <div className='menu_intro'>청약부금은 주거전용면적 85m² 이하의 민영주택을 공급받기 위하여 가입하는 저축입니다.</div>
           <IntroductionContent>
             <div className='mt_30'></div>
             <div className='first_content'>
