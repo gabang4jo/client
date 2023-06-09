@@ -258,7 +258,7 @@ function Introduction({...loginUserProps}) {
           <Link to="/introduction/0/a" className="navigation__link"><Box2>주택의 종류</Box2></Link>
             <Link to="/introduction/0/b" className="navigation__link_now"><Box1>주택의 종류에 따른 청약 가능 통장</Box1></Link>
           </IntroductionSubMenu>
-          <div className='menu_name_sub'>■ 주택의 종류</div>
+          <div className='menu_name_sub'>■ 주택의 종류에 따른 청약 가능 통장</div>
           <IntroductionContent>
             <div className='mt_30'></div>
             <div className='first_content'>
