@@ -354,6 +354,7 @@ function Introduction({...loginUserProps}) {
           <Nav></Nav>
           <Bar></Bar>
           </IntroductionMenu>
+          <div className='menu_name'>■ 청약신청방법</div>
           <IntroductionSubMenu>
             <Link to="/introduction/3/a" className="navigation__link_now"><Box1>인터넷 청약신청</Box1></Link>
             <Link to="/introduction/3/b" className="navigation__link"><Box2>은행지점 청약신청</Box2></Link>
