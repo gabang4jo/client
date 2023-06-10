@@ -2,8 +2,6 @@ import styled from 'styled-components'
 import React,{useState} from 'react'
 import MainHeader from './MainHeader'
 import { Link } from 'react-router-dom'
-import bbook_user from '../assets/bbook_user.png'
-import bbook_money from '../assets/bbook_money.png'
 
 const IntroductionContainer=styled.div`
     display: flex;
@@ -48,31 +46,6 @@ const IntroductionNameBox=styled.div`
   font-size: 50px;
 `;
 
-const IntroductionBody = styled.div`
-  color: #333333;
-
-  .menu_name {
-    margin-left: 80px;
-    margin-top: 80px;
-    font-size: 27px;
-    font-weight: 550;
-  }
-
-  .menu_name_sub {
-    margin-left: 80px;
-    margin-top: 30px;
-    font-size: 22px;
-    font-weight: 550;
-  }
-
-  .menu_intro {
-    margin-left: 80px;
-    margin-top: 20px;
-    font-size: 20px;
-    font-weight: 500;
-  }
-`;
-
 const IntroductionMenu=styled.div`
 li { 
   display: table-cell; 
@@ -107,6 +80,31 @@ a:hover:after {
 }  
 `;
 
+const IntroductionBody = styled.div`
+  color: #333333;
+
+  .menu_name {
+    margin-left: 80px;
+    margin-top: 80px;
+    font-size: 27px;
+    font-weight: 550;
+  }
+
+  .menu_name_sub {
+    margin-left: 80px;
+    margin-top: 30px;
+    font-size: 22px;
+    font-weight: 550;
+  }
+
+  .menu_intro {
+    margin-left: 80px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+`;
+
 const IntroductionSubMenu = styled.div`
   display: flex;
   justify-content: center;
@@ -116,7 +114,7 @@ const IntroductionSubMenu = styled.div`
 
   .navigation__link_now {
     height: 80px;
-    width: 450px;
+    width: 900px;
 
     text-decoration: none;
     font-size: 23px;
@@ -125,7 +123,7 @@ const IntroductionSubMenu = styled.div`
 
   .navigation__link {
     height: 80px;
-    width: 450px;
+    width: 900px;
 
     text-decoration: none;
     font-size: 23px;
@@ -142,7 +140,7 @@ const IntroductionSubMenu = styled.div`
 `;
 
 const IntroductionContent = styled.div`
-  height: 700px;
+  height: 500px;
 
   .content_name {
     margin-left: 100px;
@@ -154,10 +152,15 @@ const IntroductionContent = styled.div`
 
   .content_tip {
     margin-left: 100px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
     font-size: 17px;
     font-weight: 500;
+  }
+
+  .content {
+    margin-left: 120px;
+    margin-top: 10px;
+    font-size: 15px;
   }
 
   .content_box {
@@ -233,19 +236,20 @@ const IntroductionContent = styled.div`
   table.tbl_st th {
     padding: 1px 8px;
     background-color: #f5f5f5;
-    border-right: 1px solid #c9c9c9;
     border-left: 1px solid #c9c9c9;
+    border-right: 1px solid #c9c9c9;
+    font-weight: 550;
     color: #333;
   }
 
   table.tbl_st td {
     padding: 5px 15px;
-    border-right: 1px solid #c9c9c9;
     border-left: 1px solid #c9c9c9;
+    border-right: 1px solid #c9c9c9;
     color: #333;
   }
 
-  table.tbl_st.tbl_center td {
+  .txt_c {
     text-align: center;
   }
 
@@ -259,6 +263,13 @@ const IntroductionContent = styled.div`
     text-indent: initial;
     margin: 0;
     padding: 0;
+  }
+
+  ul.bul_list > li {
+    padding-left: 13px;
+    box-sizing: border-box;
+    margin: 3px 0;
+    position: relative;
   }
 `;
 
@@ -327,9 +338,9 @@ const Box2 = styled.div`
 function Nav(){
   return <NavUl>
     <li><Link to="/introduction/0/a" className="navigation__link">청약주택</Link></li>
-    <li><Link to="/introduction/1/a" className="navigation__link_now">청약통장</Link></li>
+    <li><Link to="/introduction/1/a" className="navigation__link">청약통장</Link></li>
     <li><Link to="/introduction/2/a" className="navigation__link">청약자격</Link></li>
-    <li><Link to="/introduction/3/a" className="navigation__link">청약신청방법</Link></li>
+    <li><Link to="/introduction/3/a" className="navigation__link_now">청약신청방법</Link></li>
   </NavUl>
 }
 
@@ -343,99 +354,44 @@ function Introduction({...loginUserProps}) {
           <Nav></Nav>
           <Bar></Bar>
           </IntroductionMenu>
-          <div className='menu_name'>■ 청약통장</div>
           <IntroductionSubMenu>
-            <Link to="/introduction/1/a" className="navigation__link"><Box2>청약통장 종류</Box2></Link>
-            <Link to="/introduction/1/b" className="navigation__link"><Box2>주택청약종합저축</Box2></Link>
-            <Link to="/introduction/1/c" className="navigation__link"><Box2>청약저축</Box2></Link>
-            <Link to="/introduction/1/d" className="navigation__link_now"><Box1>청약예금ㆍ청약부금</Box1></Link>
+            <Link to="/introduction/3/a" className="navigation__link_now"><Box1>인터넷 청약신청</Box1></Link>
+            <Link to="/introduction/3/b" className="navigation__link"><Box2>은행지점 청약신청</Box2></Link>
           </IntroductionSubMenu>
-          <div className='menu_name_sub'>■ 청약예금</div>
-          <div className='menu_intro'>청약예금은 민영주택을 공급받기 위하여 가입하는 저축입니다.</div>
-          <div className='menu_intro'>청약부금은 주거전용면적 85m² 이하의 민영주택을 공급받기 위하여 가입하는 저축입니다.</div>
+          <div className='menu_name_sub'>■ 인터넷 청약신청</div>
           <IntroductionContent>
             <div className='mt_30'></div>
-            <div className='first_content'>
-              <ul>
-                <li>
-                  <img src={bbook_user} alt="가입대상 아이콘"></img>
-                  <p>가입대상</p>
-                  <span className="color_gray">
-                    만 19세 이상의 개인 (세대주인 경우 만 19세 미만인 경우도<br/>
-                    가입 가능하나 단독세대주는 가입 불가)<br/>
-                  </span>
-                  <span className="color_red">*15월 9월 1일부터 신규가입 중단</span>
-                </li>
-                <li className='cell'>
-                  <img src={bbook_money} alt="금액 아이콘"></img>
-                  <p>적립방법/저축금액</p>
-                  <span className="color_gray">
-                    매월 2만원 이상 50만원 이내에서 자유롭게 납입
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <div className='menu_name_sub'>■ 지역별 예치금액 ("지역"은 입주자모집공고일 현재 주택공급신청자의 주민등록표에 따른
-            거주지역 기준임)</div>
-            <p className='tbl_caption'>(단위 : 만원)</p>
-            <table className="tbl_st tbl_center">
-						<colgroup>
-							<col style={{width:'auto'}}/>
-							<col style={{width:'14%'}}/>
-							<col style={{width:'14%'}}/>
-							<col style={{width:'14%'}}/>
-							<col style={{width:'14%'}}/>
-							<col style={{width:'14%'}}/>
-							<col style={{width:'14%'}}/>
-						</colgroup>
-						<thead>
-							<tr>
-								<th scope="rowgroup" rowSpan="2">구분</th>
-								<th scope="colgroup" colSpan="3">청약예금</th>
-								<th scope="colgroup" colSpan="3">청약부금<br/>(85m<sup>2</sup> 이하의 주택에만 청약신청 가능)</th>
-							</tr>
-							<tr>
-								<th scope="col">서울/부산</th>
-								<th scope="col">기타 광역시</th>
-								<th scope="col">기타 시/군</th>
-								<th scope="col">서울/부산</th>
-								<th scope="col">기타 광역시</th>
-								<th scope="col">기타 시/군</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>85㎡ 이하</td>
-								<td>     300</td>
-								<td>     250</td>
-								<td>     200</td>
-								<td>     300</td>
-								<td>     250</td>
-								<td>     200</td>	
-							</tr>
-							<tr>
-								<td>102㎡ 이하</td>
-								<td>     600</td>
-								<td>     400</td>
-								<td>     300</td>
-								<td colSpan="3" rowSpan="3">
-									<small className="color_red">청약부금으로 민영주택 2순위 청약 시에는<br/>예치금에 관계없이 모든 주택 규모 청약 가능</small>
-								</td>
-							</tr>
-							<tr>
-								<td>135㎡ 이하</td>
-								<td>   1,000</td>
-								<td>     700</td>
-								<td>     400</td>
-							</tr>
-							<tr>
-								<td>모든면적</td>
-								<td>   1,500</td>
-								<td>   1,000</td>
-								<td>     500</td>
-							</tr>
-						</tbody>
-					</table>
+            <table className="tbl_st">
+					    <colgroup>
+					    	<col style={{width:'15%'}}/>
+					    	<col style={{width:'auto'}}/>
+					    </colgroup>
+					    <thead>
+					    	<tr>
+					    		<th scope="col">구분</th>
+					    		<th scope="col">내용</th>
+					    	</tr>
+					    </thead>
+					    <tbody>
+					    	<tr>
+					    		<td className="txt_c">이용대상</td>
+					    		<td>공동인증서(은행보험용 또는 범용)를 보유한 청약통장 가입고객</td>
+					    	</tr>
+					    	<tr>
+					    		<td className="txt_c">이용시간</td>
+					    		<td>청약신청일 09:00 ~ 17:30</td>
+					    	</tr>
+					    	<tr>
+					    		<td className="txt_c">이용방법</td>
+					    		<td>
+					    			<ul className="bul_list black_list">
+					    				<li>한국부동산원 청약Home 홈페이지 &gt; 청약신청 &gt; APT &gt; 청약신청</li>
+					    				<li>한국부동산원 청약Home 홈페이지 &gt; 청약신청 &gt; APT &gt; 청약취소</li>
+					    			</ul>
+					    		</td>
+					    	</tr>
+					    </tbody>
+				    </table>
           </IntroductionContent>
         </IntroductionBody>
       </IntroductionContainer>

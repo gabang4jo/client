@@ -11,6 +11,30 @@ const IntroductionContainer=styled.div`
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
+
+    .mt_10 {
+      margin-top: 10px;
+    }
+  
+    .mt_30 {
+      margin-top: 30px;
+    }
+  
+    .color_gray {
+      color: #555555;
+    }
+  
+    .color_red {
+      color: #bd413d;
+    }
+  
+    .color_blue {
+      color: #3964e5;
+    }
+  
+    .color_black {
+      color: #333333;
+    }
 `;
 
 const IntroductionNameBox=styled.div`
@@ -184,10 +208,6 @@ const IntroductionContent = styled.div`
     margin: 0 auto;
   }
 
-  .mt_30 {
-    margin-top: 30px;
-  }
-
   .first_content {
     border-top: 2px solid #3964E5;
     border-bottom: 1px solid #c9c9c9;
@@ -258,8 +278,8 @@ function Nav(){
   return <NavUl>
     <li><Link to="/introduction/0/a" className="navigation__link_now">청약주택</Link></li>
     <li><Link to="/introduction/1/a" className="navigation__link">청약통장</Link></li>
-    <li><Link to="/introduction/2" className="navigation__link">청약자격</Link></li>
-    <li><Link to="/introduction/3" className="navigation__link">청약신청방법</Link></li>
+    <li><Link to="/introduction/2/a" className="navigation__link">청약자격</Link></li>
+    <li><Link to="/introduction/3/a" className="navigation__link">청약신청방법</Link></li>
   </NavUl>
 }
 

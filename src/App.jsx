@@ -9,8 +9,10 @@ import IntroductionPage1A from './pages/IntroductionPage1_a';
 import IntroductionPage1B from './pages/IntroductionPage1_b';
 import IntroductionPage1C from './pages/IntroductionPage1_c';
 import IntroductionPage1D from './pages/IntroductionPage1_d';
-import IntroductionPage2 from './pages/IntroductionPage2';
-import IntroductionPage3 from './pages/IntroductionPage3';
+import IntroductionPage2A from './pages/IntroductionPage2_a';
+import IntroductionPage2B from './pages/IntroductionPage2_b';
+import IntroductionPage3A from './pages/IntroductionPage3_a';
+import IntroductionPage3B from './pages/IntroductionPage3_b';
 import SearchPage from './pages/SearchPage';
 import CalendarPage from './pages/CalendarPage';
 import MapPage from './pages/MapPage';
@@ -53,8 +55,10 @@ function App() {
           <Route path='/introduction/1/b' element={<IntroductionPage1B />} />
           <Route path='/introduction/1/c' element={<IntroductionPage1C />} />
           <Route path='/introduction/1/d' element={<IntroductionPage1D />} />
-          <Route path='/introduction/2' element={<IntroductionPage2 />} />
-          <Route path='/introduction/3' element={<IntroductionPage3 />} />
+          <Route path='/introduction/2/a' element={<IntroductionPage2A />} />
+          <Route path='/introduction/2/b' element={<IntroductionPage2B />} />
+          <Route path='/introduction/3/a' element={<IntroductionPage3A />} />
+          <Route path='/introduction/3/b' element={<IntroductionPage3B />} />
           <Route path='/search' element={<SearchPage />} />
           <Route path='/calendar' element={<CalendarPage />} />
           <Route path='/map' element={<MapPage />} />

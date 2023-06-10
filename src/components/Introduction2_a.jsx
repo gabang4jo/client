@@ -2,8 +2,6 @@ import styled from 'styled-components'
 import React,{useState} from 'react'
 import MainHeader from './MainHeader'
 import { Link } from 'react-router-dom'
-import bbook_user from '../assets/bbook_user.png'
-import bbook_money from '../assets/bbook_money.png'
 
 const IntroductionContainer=styled.div`
     display: flex;
@@ -48,31 +46,6 @@ const IntroductionNameBox=styled.div`
   font-size: 50px;
 `;
 
-const IntroductionBody = styled.div`
-  color: #333333;
-
-  .menu_name {
-    margin-left: 80px;
-    margin-top: 80px;
-    font-size: 27px;
-    font-weight: 550;
-  }
-
-  .menu_name_sub {
-    margin-left: 80px;
-    margin-top: 30px;
-    font-size: 22px;
-    font-weight: 550;
-  }
-
-  .menu_intro {
-    margin-left: 80px;
-    margin-top: 20px;
-    font-size: 20px;
-    font-weight: 500;
-  }
-`;
-
 const IntroductionMenu=styled.div`
 li { 
   display: table-cell; 
@@ -107,6 +80,31 @@ a:hover:after {
 }  
 `;
 
+const IntroductionBody = styled.div`
+  color: #333333;
+
+  .menu_name {
+    margin-left: 80px;
+    margin-top: 80px;
+    font-size: 27px;
+    font-weight: 550;
+  }
+
+  .menu_name_sub {
+    margin-left: 80px;
+    margin-top: 30px;
+    font-size: 22px;
+    font-weight: 550;
+  }
+
+  .menu_intro {
+    margin-left: 80px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+`;
+
 const IntroductionSubMenu = styled.div`
   display: flex;
   justify-content: center;
@@ -116,7 +114,7 @@ const IntroductionSubMenu = styled.div`
 
   .navigation__link_now {
     height: 80px;
-    width: 450px;
+    width: 900px;
 
     text-decoration: none;
     font-size: 23px;
@@ -125,7 +123,7 @@ const IntroductionSubMenu = styled.div`
 
   .navigation__link {
     height: 80px;
-    width: 450px;
+    width: 900px;
 
     text-decoration: none;
     font-size: 23px;
@@ -154,10 +152,15 @@ const IntroductionContent = styled.div`
 
   .content_tip {
     margin-left: 100px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
     font-size: 17px;
     font-weight: 500;
+  }
+
+  .content {
+    margin-left: 120px;
+    margin-top: 10px;
+    font-size: 15px;
   }
 
   .content_box {
@@ -245,7 +248,7 @@ const IntroductionContent = styled.div`
     color: #333;
   }
 
-  table.tbl_st.tbl_center td {
+  .txt_c {
     text-align: center;
   }
 
@@ -259,6 +262,13 @@ const IntroductionContent = styled.div`
     text-indent: initial;
     margin: 0;
     padding: 0;
+  }
+
+  ul.bul_list > li {
+    padding-left: 13px;
+    box-sizing: border-box;
+    margin: 3px 0;
+    position: relative;
   }
 `;
 
@@ -327,8 +337,8 @@ const Box2 = styled.div`
 function Nav(){
   return <NavUl>
     <li><Link to="/introduction/0/a" className="navigation__link">청약주택</Link></li>
-    <li><Link to="/introduction/1/a" className="navigation__link_now">청약통장</Link></li>
-    <li><Link to="/introduction/2/a" className="navigation__link">청약자격</Link></li>
+    <li><Link to="/introduction/1/a" className="navigation__link">청약통장</Link></li>
+    <li><Link to="/introduction/2/a" className="navigation__link_now">청약자격</Link></li>
     <li><Link to="/introduction/3/a" className="navigation__link">청약신청방법</Link></li>
   </NavUl>
 }
@@ -343,99 +353,92 @@ function Introduction({...loginUserProps}) {
           <Nav></Nav>
           <Bar></Bar>
           </IntroductionMenu>
-          <div className='menu_name'>■ 청약통장</div>
+          <div className='menu_name'>■ 청약자격</div>
           <IntroductionSubMenu>
-            <Link to="/introduction/1/a" className="navigation__link"><Box2>청약통장 종류</Box2></Link>
-            <Link to="/introduction/1/b" className="navigation__link"><Box2>주택청약종합저축</Box2></Link>
-            <Link to="/introduction/1/c" className="navigation__link"><Box2>청약저축</Box2></Link>
-            <Link to="/introduction/1/d" className="navigation__link_now"><Box1>청약예금ㆍ청약부금</Box1></Link>
+            <Link to="/introduction/2/a" className="navigation__link_now"><Box1>민영주택</Box1></Link>
+            <Link to="/introduction/2/b" className="navigation__link"><Box2>국민주택</Box2></Link>
           </IntroductionSubMenu>
-          <div className='menu_name_sub'>■ 청약예금</div>
-          <div className='menu_intro'>청약예금은 민영주택을 공급받기 위하여 가입하는 저축입니다.</div>
-          <div className='menu_intro'>청약부금은 주거전용면적 85m² 이하의 민영주택을 공급받기 위하여 가입하는 저축입니다.</div>
+          <div className='menu_name_sub'>■ 민영주택</div>
+          <div className='menu_intro'>최초 입주자모집공고일 현재 해당 주택건설지역 또는 인근지역에 거주하는 자로서 민법에 따른
+          성년자(만 19세 이상)와 아래의 어느 하나에 해당하는 세대주인 미성년자(주택청약 시 성년자로 인정)<br/>만 청약 신청할 수 있습니다.
+          단, 아래의 자녀 및 형제자매는 세대주인 미성년자와 같은 세대별 주민등록표등본에 등재되어 있어야 합니다.</div>
+          <div className='menu_intro'>
+            - 자녀를 양육하는 경우<br/>
+            - 직계존속의 사망, 실종선고 및 행방불명 등으로 형제자매를 부양하는 경우
+          </div>
           <IntroductionContent>
             <div className='mt_30'></div>
-            <div className='first_content'>
-              <ul>
-                <li>
-                  <img src={bbook_user} alt="가입대상 아이콘"></img>
-                  <p>가입대상</p>
-                  <span className="color_gray">
-                    만 19세 이상의 개인 (세대주인 경우 만 19세 미만인 경우도<br/>
-                    가입 가능하나 단독세대주는 가입 불가)<br/>
-                  </span>
-                  <span className="color_red">*15월 9월 1일부터 신규가입 중단</span>
-                </li>
-                <li className='cell'>
-                  <img src={bbook_money} alt="금액 아이콘"></img>
-                  <p>적립방법/저축금액</p>
-                  <span className="color_gray">
-                    매월 2만원 이상 50만원 이내에서 자유롭게 납입
-                  </span>
-                </li>
-              </ul>
+            <table className="tbl_st">
+					  	<colgroup>
+					  		<col style={{width:'15%'}}/>
+					  		<col style={{width:'15%'}}/>
+					  		<col style={{width:'auto'}}/>
+					  		<col style={{width:'25%'}}/>
+					  	</colgroup>
+					  	<thead>
+					  		<tr>
+					  			<th scope="colgroup" rowSpan="2">청약순위</th>
+					  			<th scope="colgroup" rowSpan="2">청약통장<br/>(입주자저축)</th>
+					  			<th scope="col" colSpan="2">순위별 조건</th>
+					  		</tr>
+					  		<tr>
+					  			<th scope="col">청약통장 가입기간</th>
+					  			<th scope="col">납입금</th>
+					  		</tr>
+					  	</thead>
+					  	<tbody>
+					  		<tr>
+					  			<th scope="row" rowSpan="3">1순위</th>
+					  			<td className="txt_c">주택청약<br/>종합저축</td>
+					  			<td rowSpan="3">
+					  				<ul className="bul_list">
+					  					<li className="color_black">투기과열지구 및 청약과열지역<br/>: 가입 후 2년이 경과한 분</li>
+					  					<li className="color_black">위축지역<br/>: 가입 후 1개월이 경과한 분</li>
+					  					<li className="color_black">
+					  						투기과열지구 및 청약과열지역, 위축지역 외
+					  						<ul className="bul_list line_list">
+					  							<li className="color_black">수도권 지역 : 가입 후 1년이 경과한 분<br/>(다만, 필요한 경우 시ㆍ도지사가 24개월까지 연장 가능)</li>
+					  							<li className="color_black">수도권 외 지역 : 가입 후 6개월이 경과한 분<br/>(다만, 필요한 경우 시ㆍ도지사가 12개월까지 연장 가능)</li>
+					  						</ul>
+					  					</li>
+					  				</ul>
+					  			</td>
+					  			<td rowSpan="2">납입인정금액이 지역별 예치금액 이상인 분</td>
+					  		</tr>
+					  		<tr>
+					  			<td className="txt_c">청약예금</td>
+					  		</tr>
+					  		<tr>
+					  			<td className="txt_c">청약부금<br/>(85m<sup>2</sup> 이하만 청약 가능)</td>
+					  			<td>매월 약정납입일에 납입한 납입인정금액이<br/> 지역별 예치금액 이상인 분</td>
+					  		</tr>
+					  		<tr>
+					  			<th scope="row">2순위<br/><small className="dis_b">(1순위 제한 자<sup>주)</sup> 포함)</small></th>
+					  			<td colSpan="3">1순위에 해당하지 않는 분 (청약통장 가입자만 청약가능)</td>
+					  		</tr>
+					  	</tbody>
+					  </table>
+            <div className='mt_30'></div>
+            <div className='content_tip'>
+              주) 1순위 제한 자
             </div>
-            <div className='menu_name_sub'>■ 지역별 예치금액 ("지역"은 입주자모집공고일 현재 주택공급신청자의 주민등록표에 따른
-            거주지역 기준임)</div>
-            <p className='tbl_caption'>(단위 : 만원)</p>
-            <table className="tbl_st tbl_center">
-						<colgroup>
-							<col style={{width:'auto'}}/>
-							<col style={{width:'14%'}}/>
-							<col style={{width:'14%'}}/>
-							<col style={{width:'14%'}}/>
-							<col style={{width:'14%'}}/>
-							<col style={{width:'14%'}}/>
-							<col style={{width:'14%'}}/>
-						</colgroup>
-						<thead>
-							<tr>
-								<th scope="rowgroup" rowSpan="2">구분</th>
-								<th scope="colgroup" colSpan="3">청약예금</th>
-								<th scope="colgroup" colSpan="3">청약부금<br/>(85m<sup>2</sup> 이하의 주택에만 청약신청 가능)</th>
-							</tr>
-							<tr>
-								<th scope="col">서울/부산</th>
-								<th scope="col">기타 광역시</th>
-								<th scope="col">기타 시/군</th>
-								<th scope="col">서울/부산</th>
-								<th scope="col">기타 광역시</th>
-								<th scope="col">기타 시/군</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>85㎡ 이하</td>
-								<td>     300</td>
-								<td>     250</td>
-								<td>     200</td>
-								<td>     300</td>
-								<td>     250</td>
-								<td>     200</td>	
-							</tr>
-							<tr>
-								<td>102㎡ 이하</td>
-								<td>     600</td>
-								<td>     400</td>
-								<td>     300</td>
-								<td colSpan="3" rowSpan="3">
-									<small className="color_red">청약부금으로 민영주택 2순위 청약 시에는<br/>예치금에 관계없이 모든 주택 규모 청약 가능</small>
-								</td>
-							</tr>
-							<tr>
-								<td>135㎡ 이하</td>
-								<td>   1,000</td>
-								<td>     700</td>
-								<td>     400</td>
-							</tr>
-							<tr>
-								<td>모든면적</td>
-								<td>   1,500</td>
-								<td>   1,000</td>
-								<td>     500</td>
-							</tr>
-						</tbody>
-					</table>
+            <div className='content_tip'>
+            청약주택별 다음 어느 하나에 해당하는 경우 청약통장이 1순위에 해당하여도 2순위로 청약하여야 합니다.<br/>
+            - 투기과열지구 또는 청약과열지역 내 민영주택에 청약하는 경우
+            </div>
+            <div className='content color_gray'>
+              (1) 세대주가 아닌 자<br/>
+              (2) 과거 5년 이내에 다른 주택에 당첨된 세대에 속한 자<br/>
+              (3) 2주택 이상 소유한 세대에 속한 자
+            </div>
+            <div className='content_tip'>
+              - 주거전용 85m²를 초과 공공건설임대주택, 수도권에 지정된 공공주택지구에서 공급하는 민영주택에 청약하는 경우 2주택 이상 소유한 세대에 속한 자
+            </div>
+            <div className='content_tip'>
+              * 순위별 청약자격 발생 기준일 : 최초 입주자모집공고일<br/>
+              * 청약저축 가입자의 민영주택 청약 : 가입 후 1순위 자격을 취득하여 납입인정금액이 각 지역별 청약예금 예치금액이상인 경우 해당 청약예금으로 전환 (입주자모집공고일<br/>
+              전일까지)하여 청약할 수 있음
+            </div>
           </IntroductionContent>
         </IntroductionBody>
       </IntroductionContainer>

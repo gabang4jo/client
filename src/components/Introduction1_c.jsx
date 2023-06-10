@@ -11,6 +11,30 @@ const IntroductionContainer=styled.div`
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
+
+    .mt_10 {
+      margin-top: 10px;
+    }
+  
+    .mt_30 {
+      margin-top: 30px;
+    }
+  
+    .color_gray {
+      color: #555555;
+    }
+  
+    .color_red {
+      color: #bd413d;
+    }
+  
+    .color_blue {
+      color: #3964e5;
+    }
+  
+    .color_black {
+      color: #333333;
+    }
 `;
 
 const IntroductionNameBox=styled.div`
@@ -148,18 +172,6 @@ const IntroductionContent = styled.div`
     margin: 0 auto;
   }
 
-  .mt_30 {
-    margin-top: 30px;
-  }
-
-  .color_gray {
-    color: #555555;
-  }
-
-  .color_red {
-    color: #bd413d;
-  }
-
   .first_content {
     border-top: 2px solid #3964E5;
     border-bottom: 1px solid #c9c9c9;
@@ -261,8 +273,8 @@ function Nav(){
   return <NavUl>
     <li><Link to="/introduction/0/a" className="navigation__link">청약주택</Link></li>
     <li><Link to="/introduction/1/a" className="navigation__link_now">청약통장</Link></li>
-    <li><Link to="/introduction/2" className="navigation__link">청약자격</Link></li>
-    <li><Link to="/introduction/3" className="navigation__link">청약신청방법</Link></li>
+    <li><Link to="/introduction/2/a" className="navigation__link">청약자격</Link></li>
+    <li><Link to="/introduction/3/a" className="navigation__link">청약신청방법</Link></li>
   </NavUl>
 }
 
@@ -292,7 +304,7 @@ function Introduction({...loginUserProps}) {
                 <li>
                   <img src={bbook_user} alt="가입대상 아이콘"></img>
                   <p>가입대상</p>
-                  <span class="color_gray">
+                  <span className="color_gray">
                     무주택세대의 세대주 및 (세대주의) 세대구성원으로서 1인<br/>
                     1계좌 가입 가입가능<br/>
                     - 무주택세대 : 세대주와 세대구성원이 모두 무주택인 세대 <br/>
@@ -300,12 +312,12 @@ function Introduction({...loginUserProps}) {
                     (부모, 자녀 등)<br/>
                     단, 만 19세 미만인 단독 세대주는 가입 불가<br/>
                   </span>
-                  <span class="color_red">*15월 9월 1일부터 신규가입 중단</span>
+                  <span className="color_red">*15월 9월 1일부터 신규가입 중단</span>
                 </li>
                 <li className='cell'>
                   <img src={bbook_money} alt="금액 아이콘"></img>
                   <p>적립방법/저축금액</p>
-                  <span class="color_gray">
+                  <span className="color_gray">
                     매월 2만원 이상 50만원 이내에서 자유롭게 납입
                   </span>
                 </li>
