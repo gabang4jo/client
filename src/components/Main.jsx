@@ -72,7 +72,7 @@ function Main({...loginUserProps}) {
     {id:0,t1:'청약 알리미',t2:'내 집 마련의 첫걸음! 청약 알리미가 도와드립니다!'},
   ]
 
-  const [id,setId]=useState(0);
+  const [id]=useState(0);
 
   return (
     <MainContainer>

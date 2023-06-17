@@ -100,7 +100,7 @@ const Bar = styled.hr`
 
 function Nav(){
   return <NavUl>
-    <li><Link to="/recommend/calculator" className="navigation__link">가점계산</Link></li>
+    <li><Link to="/recommend/calculator" className="navigation__link">가점계산기</Link></li>
     <li><Link to="/recommend/strategy" className="navigation__link_now">추천전략</Link></li>
   </NavUl>
 }
