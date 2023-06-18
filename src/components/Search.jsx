@@ -2,6 +2,8 @@ import styled from 'styled-components'
 import React, { useState, useEffect } from 'react'
 import MainHeader from './MainHeader'
 import Pagination from './Pagination'
+import Axios from 'axios'
+import moment from 'moment'
 import ic_search from '../assets/ic_search.png'
 import sel_arw from '../assets/sel_arw.png'
 
@@ -67,7 +69,6 @@ const SearchBody = styled.div`
 `;
 
 const SearchContent = styled.div`
-  height: 1230px;
 
   .search_wrap {
     width: 90%;
@@ -294,12 +295,30 @@ function Search({...loginUserProps}) {
     const [page, setPage] = useState(1);
     const offset = (page - 1) * limit;
 
-    const [SelectedStart, setSelectedStart] = useState("202208");
+    const [SelectedStart, setSelectedStart] = useState("202304");
     const [SelectedEnd, setSelectedEnd] = useState("202307");
     const [SelectedHouseDetail, setSelectedHouseDetail] = useState("");
     const [SelectedSupplyArea, setSelectedSupplyArea] = useState("");
     const [HousingName, setHousingName] = useState("");
-    const [checkedButtons, setCheckedButtons] = useState(['checkAll']);
+    const [checkedButtons, setCheckedButtons] = useState(['']);
+
+    useEffect(() => {
+      Axios.get(
+      'http://13.124.229.36:8080/api/applications/apartment', 
+      {
+        housingType : "",
+        region : "",
+        rentOrSale : "", 
+        startYear : "2023",
+        startMonth : "4",
+        endYear : "2023",
+        endMonth : "6"
+      }).then((response) => {
+          if(response.data.success) {
+            setSearchList(response.data.response);
+          }
+      })
+    }, []);
 
     const handleSelectStart = (e) => {
       setSelectedStart(e.target.value);
@@ -321,26 +340,21 @@ function Search({...loginUserProps}) {
       setHousingName(e.target.value);
     };
 
-    const changeHandler = (checked, id) => {
-      if (id === 'checkAll'){
+    const changeHandler = (checked, value) => {
+      if (value === ''){
         if(checked) {
-          setCheckedButtons(['checkAll']);
+          setCheckedButtons(['']);
         } else {
-          setCheckedButtons(checkedButtons => checkedButtons.filter(button => button !== id));
+          setCheckedButtons(checkedButtons => checkedButtons.filter(button => button !== value));
         }
         return;
       }
       else {
-        setCheckedButtons(checkedButtons => checkedButtons.filter(button => button !== 'checkAll'));
+        setCheckedButtons(checkedButtons => checkedButtons.filter(button => button !== ''));
         if (checked) {
-          if(checkedButtons.length === 2){
-            setCheckedButtons(['checkAll']);
-          }
-          else {
-            setCheckedButtons(checkedButtons => [...checkedButtons, id]);
-          }
+            setCheckedButtons(checkedButtons => [value]);
         } else {
-          setCheckedButtons(checkedButtons => checkedButtons.filter(button => button !== id));
+          setCheckedButtons(checkedButtons => checkedButtons.filter(button => button !== value));
         }
       }
     };
@@ -352,16 +366,27 @@ function Search({...loginUserProps}) {
         alert("마침년월은 시작년월보다 미래여야 합니다.");
         return;
       }
-      console.log(SelectedStart, SelectedEnd, SelectedHouseDetail, SelectedSupplyArea, HousingName, checkedButtons);
+
+      checkedButtons.sort();
+
+      Axios.post(
+        'http://13.124.229.36:8080/api/applications/apartment/search', 
+        { 
+          housingType : SelectedHouseDetail,
+          region : SelectedSupplyArea,
+          rentOrSale : checkedButtons[0],
+          startYear : SelectedStart.substring(0,4),
+          startMonth : SelectedStart.substring(5,6),
+          endYear : SelectedEnd.substring(0,4),
+          endMonth : SelectedEnd.substring(5,6)
+        }).then((response) => {
+            if(response.data.success) {
+              setSearchList(response.data.response);
+            }
+      })
+
+      console.log(searchList);
     }
-
-
-    useEffect(() => {
-      fetch("https://jsonplaceholder.typicode.com/posts")
-        .then((res) => res.json())
-        .then((data) => setSearchList(data));
-    }, []);
-  
 
     return (
       <SearchContainer>
@@ -511,8 +536,8 @@ function Search({...loginUserProps}) {
                       <label htmlFor="cate01" className="blind">주택구분</label>
 					  	        <select name="houseDetailSecd" id="cate01" onChange={handleSelectHouseDetail} value={SelectedHouseDetail}>
 					  		        <option value="">주택구분 전체</option>
-					  					  <option value="01">민영</option>
-					  					  <option value="03">국민</option>
+					  					  <option value="PRIVATE">민영</option>
+					  					  <option value="NATIONAL">국민</option>
 					  	        </select>
 					          </div>
 					          <div className="select_st">
@@ -548,22 +573,22 @@ function Search({...loginUserProps}) {
                       </dt>
 					  	        <dd>
 					  		        <div className="check_st2" style={{height:"22px"}}>
-					  		  	      <input type="checkbox" id="chk0" name="chk0" value="" onChange={e => {changeHandler(e.currentTarget.checked, 'checkAll')}} checked={checkedButtons.includes('checkAll')?true:false}/>
+					  		  	      <input type="checkbox" id="chk0" name="chk0" value="" onChange={e => {changeHandler(e.currentTarget.checked, e.target.value)}} checked={checkedButtons.includes('')?true:false}/>
 					  		  	      <label htmlFor="chk0">전체</label>
 					  		        </div>
 
 					  		        <div className="check_st2 not_all_chk" style={{height:"22px"}}>
-					  		  	      <input type="checkbox" id="chk1" name="chk1" value="0" onChange={e => {changeHandler(e.currentTarget.checked, 'check1')}} checked={checkedButtons.includes('check1')?true:false}/>
+					  		  	      <input type="checkbox" id="chk1" name="chk1" value="분양" onChange={e => {changeHandler(e.currentTarget.checked, e.target.value)}} checked={checkedButtons.includes('분양')?true:false}/>
 					  		  	      <label htmlFor="chk1">분양주택</label>
 					  		        </div>
 
 					  		        <div className="check_st2 not_all_chk" style={{height:"22px"}}>
-					  		  	      <input type="checkbox" id="chk2" name="chk2" value="1" onChange={e => {changeHandler(e.currentTarget.checked, 'check2')}} checked={checkedButtons.includes('check2')?true:false}/>
+					  		  	      <input type="checkbox" id="chk2" name="chk2" value="분양전환가능임대" onChange={e => {changeHandler(e.currentTarget.checked, e.target.value)}} checked={checkedButtons.includes('분양전환가능임대')?true:false}/>
 					  		  	      <label htmlFor="chk2">분양전환 가능임대</label>
 					  		        </div>
 
 					  		        <div className="check_st2 not_all_chk" style={{height:"22px"}}>
-					  		  	      <input type="checkbox" id="chk3" name="chk3" value="2" onChange={e => {changeHandler(e.currentTarget.checked, 'check3')}} checked={checkedButtons.includes('check3')?true:false}/>
+					  		  	      <input type="checkbox" id="chk3" name="chk3" value="분양전환불가임대" onChange={e => {changeHandler(e.currentTarget.checked, e.target.value)}} checked={checkedButtons.includes('분양전환불가임대')?true:false}/>
 					  		  	      <label htmlFor="chk3">분양전환 불가임대</label>
 					  		        </div>
 					  	        </dd>
@@ -589,11 +614,17 @@ function Search({...loginUserProps}) {
                 </tr>
               </thead>
               <tbody>
-                {searchList.slice(offset, offset + limit).map(({ id, title, body }) => (
+                {searchList.slice(offset, offset + limit).map(({ id, region, housingType, rentOrSale, houseInfo, constructorCompany, schedule}) => (
                   <tr key={id}> 
-                    <td>{id}</td>
-                    <td>. {title}</td>
-                    <td>{body}</td>
+                    <td>{region}</td>
+                    <td>{housingType}</td>
+                    <td>{rentOrSale}</td>
+                    <td>{houseInfo.name}</td>
+                    <td>{constructorCompany}</td>
+                    <td>{schedule.contact}</td>
+                    <td>{moment(schedule.announcementDate).format('YYYY-MM-DD')}</td>
+                    <td>{moment(schedule.startDate).format('YYYY-MM-DD')+'~'+moment(schedule.endDate).format('YYYY-MM-DD')}</td>
+                    <td>{moment(schedule.winnerAnnouncementDate).format('YYYY-MM-DD')}</td>
                   </tr>
                 ))}
               </tbody>

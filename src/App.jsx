@@ -49,21 +49,21 @@ function App() {
           <Route path='/' element={<MainPage {...loginUserProps} />}/>
           <Route path='/login' element={<LoginPage {...hookProps} />} />
           <Route path='/signup' element={<SignupPage />} />
-          <Route path='/introduction/0/a' element={<IntroductionPageA />} />
-          <Route path='/introduction/0/b' element={<IntroductionPageB />} />
-          <Route path='/introduction/1/a' element={<IntroductionPage1A />} />
-          <Route path='/introduction/1/b' element={<IntroductionPage1B />} />
-          <Route path='/introduction/1/c' element={<IntroductionPage1C />} />
-          <Route path='/introduction/1/d' element={<IntroductionPage1D />} />
-          <Route path='/introduction/2/a' element={<IntroductionPage2A />} />
-          <Route path='/introduction/2/b' element={<IntroductionPage2B />} />
-          <Route path='/introduction/3/a' element={<IntroductionPage3A />} />
-          <Route path='/introduction/3/b' element={<IntroductionPage3B />} />
-          <Route path='/search' element={<SearchPage />} />
-          <Route path='/calendar' element={<CalendarPage />} />
-          <Route path='/map' element={<MapPage />} />
-          <Route path='/recommend/calculator' element={<RecommendPage />} />
-          <Route path='/recommend/strategy' element={<RecommendPage1 />} />
+          <Route path='/introduction/0/a' element={<IntroductionPageA {...loginUserProps}/>} />
+          <Route path='/introduction/0/b' element={<IntroductionPageB {...loginUserProps}/>} />
+          <Route path='/introduction/1/a' element={<IntroductionPage1A {...loginUserProps}/>} />
+          <Route path='/introduction/1/b' element={<IntroductionPage1B {...loginUserProps}/>} />
+          <Route path='/introduction/1/c' element={<IntroductionPage1C {...loginUserProps}/>} />
+          <Route path='/introduction/1/d' element={<IntroductionPage1D {...loginUserProps}/>} />
+          <Route path='/introduction/2/a' element={<IntroductionPage2A {...loginUserProps}/>} />
+          <Route path='/introduction/2/b' element={<IntroductionPage2B {...loginUserProps}/>} />
+          <Route path='/introduction/3/a' element={<IntroductionPage3A {...loginUserProps}/>} />
+          <Route path='/introduction/3/b' element={<IntroductionPage3B {...loginUserProps}/>} />
+          <Route path='/search' element={<SearchPage {...loginUserProps}/>} />
+          <Route path='/calendar' element={<CalendarPage {...loginUserProps}/>} />
+          <Route path='/map' element={<MapPage {...loginUserProps}/>} />
+          <Route path='/recommend/calculator' element={<RecommendPage {...loginUserProps}/>} />
+          <Route path='/recommend/strategy' element={<RecommendPage1 {...loginUserProps}/>} />
         </Routes>
       </div>    
     </div>

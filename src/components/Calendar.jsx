@@ -1,8 +1,9 @@
 import styled from 'styled-components'
-import React,{useState} from 'react'
-import Calendar1 from 'react-calendar'; 
+import React,{useState, useEffect} from 'react'
+import Calendar1 from 'react-calendar';
 import MainHeader from './MainHeader'
-import moment from 'moment';
+import moment from 'moment'
+import Axios from 'axios'
 
 import 'react-calendar/dist/Calendar.css'
 
@@ -35,6 +36,10 @@ const CalendarContainer=styled.div`
 
   .color_black {
     color: #333333;
+  }
+
+  .font_bold {
+    font-weight: bold;
   }
 `;
 
@@ -266,33 +271,107 @@ const Unit3 = styled.div`
   white-space: nowrap;
 `;
 
+const Unit4 = styled.div`
+  position: relative;
+  margin-top: 5px;
+  height: 23px;
+  color: #000;
+  background-color: #faa31b;
+  padding: 3px 5px 3px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: small;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+
+const Unit5 = styled.div`
+  position: relative;
+  margin-top: 5px;
+  height: 23px;
+  color: #000;
+  background-color: #ffdd24;
+  padding: 3px 5px 3px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: small;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+const Unit6 = styled.div`
+  position: relative;
+  margin-top: 5px;
+  height: 23px;
+  color: #fff;
+  background-color: #721897;
+  padding: 3px 5px 3px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: small;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+const Unit7 = styled.div`
+  position: relative;
+  margin-top: 5px;
+  height: 23px;
+  color: #000;
+  background-color: #e5a6ff;
+  padding: 3px 5px 3px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: small;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+
 function Calendar({...loginUserProps}) {
     const [value, onChange] = useState(new Date());
-    
-    const dayList = [
-      [1, '2023-06-08','DMC가재울 아이파크','01'],
-      [2, '2023-06-08','상무센트럴자이','01'],
-      [3, '2023-06-08','운정자이 시그니처','01'],
-      [4, '2023-06-08','파주 운정신도시 디에트르 센트럴파크','02'],
-      [5, '2023-06-08','e','02'],
-      [6, '2023-06-08','f','02'],
-      [7, '2023-06-13','g','03'],
-      [8, '2023-06-13','h','03'],
-      [9, '2023-06-13','i','03'],
-    ];
+    const monthOfActiveDate = moment(value).format('YYYY-MM');
+    const [activeMonth, setActiveMonth] = useState(monthOfActiveDate);
+    const [dayList, setDayList] = useState([]);
 
-    const[mark, setMark] = useState(dayList);
+    useEffect(() => {
+      Axios.get(
+        'http://13.124.229.36:8080/api/applications/calendar?year=2023&month=4', 
+        {
+          year: activeMonth.substring(0,4),
+          month: activeMonth.substring(5,7)
+        }).then((response) => {
+            if(response.data.success) {
+              setDayList(response.data.response);
+            }
+      })
+    }, []);
+
+    const getActiveMonth = (activeStartDate = moment.MomentInput) => {
+      const newActiveMonth = moment(activeStartDate).format('YYYY-MM');
+      setActiveMonth(newActiveMonth);
+    };
+
+    const handleClick = () => {
+      console.log(dayList);
+    }
     
     return (
       <CalendarContainer>
         <MainHeader {...loginUserProps} ></MainHeader>
         <CalendarNameBox>청약 캘린더</CalendarNameBox>
         <CalendarBody>
-          <div className='menu_name'>■ 청약 캘린더(청약일정)</div>
+          <div className='menu_name' onClick={handleClick}>■ 청약 캘린더(청약일정)</div>
           <CalendarContent>
             <div className='mt_30'/>
             <Calendar1
               onChange = {onChange}
+              next2Label={null}
+              prev2Label={null}
+              onActiveStartDateChange={({ activeStartDate }) =>
+                getActiveMonth(activeStartDate)
+              }
               formatDay={(locale, date) => 
                 <>
                   <div className="day-of-month">{date.getDate()}</div>
@@ -302,23 +381,78 @@ function Calendar({...loginUserProps}) {
               value = {value}
               tileContent = {({ date }) => {
                 const currentDate = moment(date).format("YYYY-MM-DD");
-                const markedDates = mark.filter(([_, markDate]) => markDate === currentDate);
+                const markedDates = dayList.filter(markDate => moment(markDate.schedule.startDate).format("YYYY-MM-DD") === currentDate);
                 return (
                   <div>
-                    {markedDates.map(([index, markDate, HousingName, type]) => (
-                      type==='01' ?
-                        <Unit1 key={index}>
-                          {HousingName}
+                    {markedDates.map((it) => (
+                        it.region === '서울' ?
+                        <Unit1 className='font_bold' key={it.id}>
+                          {it.houseInfo.name}
                         </Unit1>
-                        : type==='02' ?
-                        <Unit2 key={index}>
-                          {HousingName}
+                        : it.region === '경기' ?
+                        <Unit2 className='font_bold' key={it.id}>
+                          {it.houseInfo.name}
                         </Unit2>
-                        : type==='03' ?
-                        <Unit3 key={index}>
-                          {HousingName}
+                        : it.region === '인천' ?
+                        <Unit2 className='font_bold' key={it.id}>
+                          {it.houseInfo.name}
+                        </Unit2>                        
+                        : it.region === '강원' ?
+                        <Unit3 className='font_bold' key={it.id}>
+                          {it.houseInfo.name}
                         </Unit3>
-                        : {}
+                        : it.region === '경남' ?
+                        <Unit4 className='font_bold' key={it.id}>
+                          {it.houseInfo.name}
+                        </Unit4>
+                        : it.region === '경북' ?
+                        <Unit4 className='font_bold' key={it.id}>
+                          {it.houseInfo.name}
+                        </Unit4>
+                        : it.region === '대구' ?
+                        <Unit4 className='font_bold' key={it.id}>
+                          {it.houseInfo.name}
+                        </Unit4>
+                        : it.region === '부산' ?
+                        <Unit4 className='font_bold' key={it.id}>
+                          {it.houseInfo.name}
+                        </Unit4>   
+                        : it.region === '울산' ?
+                        <Unit4 className='font_bold' key={it.id}>
+                          {it.houseInfo.name}
+                        </Unit4>                                                
+                        : it.region === '전남' ?
+                        <Unit5 className='font_bold' key={it.id}>
+                          {it.houseInfo.name}
+                        </Unit5>
+                        : it.region === '전북' ?
+                        <Unit5 className='font_bold' key={it.id}>
+                          {it.houseInfo.name}
+                        </Unit5>
+                        : it.region === '광주' ?
+                        <Unit5 className='font_bold' key={it.id}>
+                          {it.houseInfo.name}
+                        </Unit5>                        
+                        : it.region === '충남' ?
+                        <Unit6 className='font_bold' key={it.id}>
+                          {it.houseInfo.name}
+                        </Unit6>
+                        : it.region === '충북' ?
+                        <Unit6 className='font_bold' key={it.id}>
+                          {it.houseInfo.name}
+                        </Unit6>
+                        : it.region === '대전' ?
+                        <Unit6 className='font_bold' key={it.id}>
+                          {it.houseInfo.name}
+                        </Unit6>
+                        : it.region === '세종' ?
+                        <Unit6 className='font_bold' key={it.id}>
+                          {it.houseInfo.name}
+                        </Unit6>
+                        : 
+                        <Unit7 className='font_bold' key={it.id}>
+                          {it.houseInfo.name}
+                        </Unit7>                      
                     ))}
                   </div>
                 );

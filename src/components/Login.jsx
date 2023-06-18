@@ -146,10 +146,10 @@ function Login({ setLoginId, setLoginState, setLoginName, setLoginProfile, setLo
         }
 
         Axios.post(
-            'http://localhost:3000/api/login', 
+            'http://13.124.229.36:8080/api/user/sign-in', 
             {
-                id: id,
-                password: password,
+                'userName': id,
+                'password': password,
             }).then((response) => {
                 if(response.data.success) {
                     setLoginId(response.data.loginId)
