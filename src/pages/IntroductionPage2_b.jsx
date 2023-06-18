@@ -2,11 +2,11 @@ import React from 'react'
 import GlobalStyle from '../components/GlobalStyle';
 import Introduction from '../components/Introduction2_b'
 
-const IntroductionPage2B = ({...hookProps}) => {
+const IntroductionPage2B = () => {
     return (
         <div>
             <GlobalStyle />
-            <Introduction {...hookProps} />
+            <Introduction />
         </div>
     )
 }

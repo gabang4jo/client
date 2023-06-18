@@ -344,10 +344,10 @@ function Nav(){
   </NavUl>
 }
 
-function Introduction({...loginUserProps}) {
+function Introduction() {
     return (
       <IntroductionContainer>
-        <MainHeader {...loginUserProps} ></MainHeader>
+        <MainHeader></MainHeader>
         <IntroductionNameBox>청약 소개</IntroductionNameBox>
         <IntroductionBody>
           <IntroductionMenu>

@@ -1,11 +1,11 @@
 import React from 'react'
 import GlobalStyle from '../components/GlobalStyle';
 import Map from '../components/Map';
-const MapPage = ({...hookProps}) => {
+const MapPage = () => {
     return (
         <div>
             <GlobalStyle />
-            <Map {...hookProps} />
+            <Map />
         </div>
     )
 }

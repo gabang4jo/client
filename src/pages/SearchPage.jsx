@@ -2,11 +2,11 @@ import React from 'react'
 import GlobalStyle from '../components/GlobalStyle';
 import Search from '../components/Search';
 
-const SearchPage = ({...hookProps}) => {
+const SearchPage = () => {
     return (
         <div>
             <GlobalStyle />
-            <Search {...hookProps} />
+            <Search />
         </div>
     )
 }

@@ -289,7 +289,7 @@ const SearchContent = styled.div`
   }
 `;
 
-function Search({...loginUserProps}) {
+function Search() {
     const [searchList, setSearchList] = useState([]);
     const [limit] = useState(10);
     const [page, setPage] = useState(1);
@@ -390,7 +390,7 @@ function Search({...loginUserProps}) {
 
     return (
       <SearchContainer>
-        <MainHeader {...loginUserProps} ></MainHeader>
+        <MainHeader></MainHeader>
         <SearchNameBox>청약 검색</SearchNameBox>
         <SearchBody>
           <div className='menu_name'>■ 청약 검색</div>

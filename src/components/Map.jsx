@@ -9,11 +9,11 @@ const MapContainer=styled.div`
     height: 1024;
 `;
 
-function Map({...loginUserProps}) {
+function Map() {
  
     return (
       <MapContainer>
-        <MainHeader {...loginUserProps} ></MainHeader>
+        <MainHeader></MainHeader>
       </MapContainer>
     );
 }

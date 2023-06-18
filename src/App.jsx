@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import MainPage from './pages/MainPage';
 import LoginPage from './pages/LoginPage';
@@ -18,52 +18,43 @@ import CalendarPage from './pages/CalendarPage';
 import MapPage from './pages/MapPage';
 import RecommendPage from './pages/RecommendPage';
 import RecommendPage1 from './pages/RecommendPage1';
+import MypagePage from './pages/MypagePage';
 
 function App() {
-  const [loginId, setLoginId] = useState('')
-  const [loginState, setLoginState] = useState('')
-  const [loginName, setLoginName] = useState('')
-  const [loginProfile, setLoginProfile] = useState('')
-  const [loginAddr, setLoginAddr] = useState('')
+const [loginId, setLoginId] = useState('');
 
-  const loginUserProps = {
-    loginId,
-    loginState,
-    loginName,
-    loginProfile,
-    loginAddr
-  }
+const hookProps = {
+  setLoginId
+}
 
-  const hookProps = {
-    setLoginId,
-    setLoginState,
-    setLoginName,
-    setLoginProfile,
-    setLoginAddr
-  }
-
+  useEffect(()=>{
+    var username = localStorage.getItem('username');
+    setLoginId(username);
+  });
+  
   return (
     <div className='App'>
       <div>
         <Routes>
-          <Route path='/' element={<MainPage {...loginUserProps} />}/>
+          <Route path='/' element={<MainPage />}/>
           <Route path='/login' element={<LoginPage {...hookProps} />} />
           <Route path='/signup' element={<SignupPage />} />
-          <Route path='/introduction/0/a' element={<IntroductionPageA {...loginUserProps}/>} />
-          <Route path='/introduction/0/b' element={<IntroductionPageB {...loginUserProps}/>} />
-          <Route path='/introduction/1/a' element={<IntroductionPage1A {...loginUserProps}/>} />
-          <Route path='/introduction/1/b' element={<IntroductionPage1B {...loginUserProps}/>} />
-          <Route path='/introduction/1/c' element={<IntroductionPage1C {...loginUserProps}/>} />
-          <Route path='/introduction/1/d' element={<IntroductionPage1D {...loginUserProps}/>} />
-          <Route path='/introduction/2/a' element={<IntroductionPage2A {...loginUserProps}/>} />
-          <Route path='/introduction/2/b' element={<IntroductionPage2B {...loginUserProps}/>} />
-          <Route path='/introduction/3/a' element={<IntroductionPage3A {...loginUserProps}/>} />
-          <Route path='/introduction/3/b' element={<IntroductionPage3B {...loginUserProps}/>} />
-          <Route path='/search' element={<SearchPage {...loginUserProps}/>} />
-          <Route path='/calendar' element={<CalendarPage {...loginUserProps}/>} />
-          <Route path='/map' element={<MapPage {...loginUserProps}/>} />
-          <Route path='/recommend/calculator' element={<RecommendPage {...loginUserProps}/>} />
-          <Route path='/recommend/strategy' element={<RecommendPage1 {...loginUserProps}/>} />
+          <Route path='/introduction/0/a' element={<IntroductionPageA />} />
+          <Route path='/introduction/0/b' element={<IntroductionPageB/>} />
+          <Route path='/introduction/1/a' element={<IntroductionPage1A />} />
+          <Route path='/introduction/1/b' element={<IntroductionPage1B />} />
+          <Route path='/introduction/1/c' element={<IntroductionPage1C />} />
+          <Route path='/introduction/1/d' element={<IntroductionPage1D />} />
+          <Route path='/introduction/2/a' element={<IntroductionPage2A />} />
+          <Route path='/introduction/2/b' element={<IntroductionPage2B />} />
+          <Route path='/introduction/3/a' element={<IntroductionPage3A />} />
+          <Route path='/introduction/3/b' element={<IntroductionPage3B />} />
+          <Route path='/search' element={<SearchPage />} />
+          <Route path='/calendar' element={<CalendarPage />} />
+          <Route path='/map' element={<MapPage />} />
+          <Route path='/recommend/calculator' element={<RecommendPage />} />
+          <Route path='/recommend/strategy' element={<RecommendPage1 />} />
+          <Route path={`/mypage/${loginId}`} element={<MypagePage />}/>
         </Routes>
       </div>    
     </div>

@@ -2,11 +2,11 @@ import React from 'react'
 import GlobalStyle from '../components/GlobalStyle';
 import Calendar from '../components/Calendar';
 
-const CalendarPage = ({...hookProps}) => {
+const CalendarPage = () => {
     return (
         <div>
             <GlobalStyle />
-            <Calendar {...hookProps} />
+            <Calendar />
         </div>
     )
 }

@@ -62,7 +62,7 @@ function SlideText(props){
   </div>
 }
 
-function Main({...loginUserProps}) {
+function Main() {
 
   const imgInfo=[
     {id:0,src:first_main, filter:"brightness(100%)"},
@@ -76,7 +76,7 @@ function Main({...loginUserProps}) {
 
   return (
     <MainContainer>
-      <MainHeader {...loginUserProps} ></MainHeader>
+      <MainHeader></MainHeader>
       <Slide>
         <SlideImg imgInfo={imgInfo[id]}></SlideImg>
         <SlideText textInfo={textInfo[id]}></SlideText>

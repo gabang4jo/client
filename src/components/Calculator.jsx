@@ -371,7 +371,7 @@ function Nav(){
   </NavUl>
 }
 
-function Calculator({...loginUserProps}) {
+function Calculator() {
     const [homePeriodVal, setHomePeriodVal] = useState(0);
     const [familyNumVal, setFamilyNumVal] = useState(0);
     const [accountPeriodVal, setAccountPeriodVal] = useState(0);
@@ -506,7 +506,7 @@ function Calculator({...loginUserProps}) {
 
     return (
       <CalculatorContainer>
-        <MainHeader {...loginUserProps} ></MainHeader>
+        <MainHeader></MainHeader>
         <CalculatorNameBox>청약 추천</CalculatorNameBox>
         <CalculatorMenu>
           <Nav></Nav>

@@ -133,7 +133,7 @@ const FormContainer = styled.div`
     }
 `;
 
-function Login({ setLoginId, setLoginState, setLoginName, setLoginProfile, setLoginAddr }) {
+function Login({...hookProps}) {
     const [id, setId] = useState('')
     const [password, setPassword] = useState('')
 
@@ -151,15 +151,11 @@ function Login({ setLoginId, setLoginState, setLoginName, setLoginProfile, setLo
                 'userName': id,
                 'password': password,
             }).then((response) => {
-                if(response.data.success) {
-                    setLoginId(response.data.loginId)
-                    setLoginState(response.data.loginState)
-                    setLoginName(response.data.loginName)
-                    setLoginProfile(response.data.loginProfile)
-                    setLoginAddr(response.data.loginAddr)
-
-                    navigate('/')
-                }
+                console.log(response.data);
+                hookProps.setLoginId(response.data.data.user.username);
+                localStorage.setItem('username', response.data.data.user.username);
+                localStorage.setItem('accessToken',response.data.data.accessToken);
+                navigate('/')
         })
     }
 

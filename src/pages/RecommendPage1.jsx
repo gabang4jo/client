@@ -2,11 +2,11 @@ import React from 'react'
 import GlobalStyle from '../components/GlobalStyle';
 import Strategy from '../components/Strategy';
 
-const RecommendPage1 = ({...hookProps}) => {
+const RecommendPage1 = () => {
     return (
         <div>
             <GlobalStyle />
-            <Strategy {...hookProps} />
+            <Strategy />
         </div>
     )
 }

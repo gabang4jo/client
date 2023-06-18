@@ -329,7 +329,7 @@ const Unit7 = styled.div`
   white-space: nowrap;
 `;
 
-function Calendar({...loginUserProps}) {
+function Calendar() {
     const [value, onChange] = useState(new Date());
     const monthOfActiveDate = moment(value).format('YYYY-MM');
     const [activeMonth, setActiveMonth] = useState(monthOfActiveDate);
@@ -359,7 +359,7 @@ function Calendar({...loginUserProps}) {
     
     return (
       <CalendarContainer>
-        <MainHeader {...loginUserProps} ></MainHeader>
+        <MainHeader></MainHeader>
         <CalendarNameBox>청약 캘린더</CalendarNameBox>
         <CalendarBody>
           <div className='menu_name' onClick={handleClick}>■ 청약 캘린더(청약일정)</div>

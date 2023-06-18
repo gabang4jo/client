@@ -105,11 +105,11 @@ function Nav(){
   </NavUl>
 }
 
-function Strategy({...loginUserProps}) {
+function Strategy() {
  
     return (
       <RecommendContainer>
-        <MainHeader {...loginUserProps} ></MainHeader>
+        <MainHeader></MainHeader>
         <RecommendNameBox>청약 추천</RecommendNameBox>
         <RecommendMenu>
           <Nav></Nav>

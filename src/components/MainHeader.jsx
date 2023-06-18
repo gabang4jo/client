@@ -68,6 +68,11 @@ function LogoFunc(){
   )
 }
 
+const logoutToken = () => {
+  localStorage.removeItem('accessToken');
+  localStorage.removeItem('username');
+}
+
 function Nav(){
   return <NavUl>
     <li><Link to="/introduction/0/a" className="navigation__link">청약 소개</Link></li>
@@ -78,13 +83,13 @@ function Nav(){
   </NavUl>
 }
 
-function LoginOut(loginId){
-  if(loginId.loginId !== undefined && loginId.loginId !== '') {
+function LoginOut(){
+  if(localStorage.getItem('accessToken')!==null) {
     return <div>
       <LoginUl>
-        <li><a href="/" className='loginOut__link'>LOG OUT</a></li>
+        <li><a href="/" className='loginOut__link' onClick={logoutToken}>LOG OUT</a></li>
         <li>/</li>
-        <li><Link to={"/mypage/"+loginId.loginId} className='loginOut__link'>MY PAGE</Link></li>
+        <li><Link to={"/mypage/"+localStorage.getItem('username')} className='loginOut__link'>MY PAGE</Link></li>
       </LoginUl>
     </div>
   }
@@ -98,13 +103,13 @@ function LoginOut(loginId){
   </div>
 }
 
-function MainHeader({ loginId, loginState, loginName }) {
+function MainHeader() {
   return (
     <>
     <Header>
     <LogoFunc></LogoFunc>
     <Nav></Nav>
-    <LoginOut loginId={loginId} ></LoginOut>
+    <LoginOut></LoginOut>
     </Header>
     </>
   );
