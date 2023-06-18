@@ -337,7 +337,7 @@ function Calendar() {
 
     useEffect(() => {
       Axios.get(
-        'http://13.124.229.36:8080/api/applications/calendar?year=2023&month=4', 
+        'http://13.124.229.36:8080/api/applications/calendar?year=2023&month='+activeMonth.substring(5,7), 
         {
           year: activeMonth.substring(0,4),
           month: activeMonth.substring(5,7)
@@ -346,23 +346,19 @@ function Calendar() {
               setDayList(response.data.response);
             }
       })
-    }, []);
+    }, [activeMonth]);
 
     const getActiveMonth = (activeStartDate = moment.MomentInput) => {
       const newActiveMonth = moment(activeStartDate).format('YYYY-MM');
       setActiveMonth(newActiveMonth);
     };
 
-    const handleClick = () => {
-      console.log(dayList);
-    }
-    
     return (
       <CalendarContainer>
         <MainHeader></MainHeader>
         <CalendarNameBox>청약 캘린더</CalendarNameBox>
         <CalendarBody>
-          <div className='menu_name' onClick={handleClick}>■ 청약 캘린더(청약일정)</div>
+          <div className='menu_name'>■ 청약 캘린더(청약일정)</div>
           <CalendarContent>
             <div className='mt_30'/>
             <Calendar1

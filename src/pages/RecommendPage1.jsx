@@ -1,12 +1,12 @@
 import React from 'react'
 import GlobalStyle from '../components/GlobalStyle';
-import Strategy from '../components/Strategy';
+import Recommend from '../components/Recommend';
 
 const RecommendPage1 = () => {
     return (
         <div>
             <GlobalStyle />
-            <Strategy />
+            <Recommend />
         </div>
     )
 }

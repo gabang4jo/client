@@ -134,7 +134,7 @@ const MypageContentBox = styled.div`
     }
 
     .select_region-wrap {
-        height: 100px;
+        height: 70px;
         width: 90%;
         margin: auto;
         line-height: 50px;
@@ -154,10 +154,10 @@ const MypageContentBox = styled.div`
     .save_button_wrap {
         margin: auto;
         width: 90%;
-        height: 140px;
+        height: 100px;
         text-align: center;
+
         .btnMd {
-            margin: auto;
             height: 32px;
             line-height: 30px;
             font-size: 14px;
@@ -229,37 +229,38 @@ function Mypage() {
         <MypageBody>
             <div className='mt_60'></div>
             <MypageContentBox>
-                <div className='mypage-wrap'>
-                    <div className='username font_bold'>{localStorage.getItem('username')} <span className='color_blue font_normal'>님의 마이페이지</span> </div>
-                    <div className='change_password_wrap'>
-                        <div className='change_password'>비밀번호 변경</div>
-                        <div className='row'><input type="text" placeholder="현재 비밀번호"  defaultValue="" maxLength="20" onChange={handlePasswordNow}/></div>
-                        <div className='row'><input type="text" placeholder="새 비밀번호" defaultValue="" maxLength="20" onChange={handlePasswordNew}/></div>
-                        <div className='row'><input type="text" placeholder="새 비밀번호 확인" defaultValue="" maxLength="20" onChange={handlePasswordConfirm}/></div>
-                    </div>
-                    <div className="select_region-wrap"> 
-                        <div className='select_region'>관심지역 변경</div>
-					    <select name="region" id="region" onChange={handleRegion} value={region}>
-					  	    <option value="서울">서울</option>
-					  	    <option value="경기">경기</option>
-                            <option value="강원">강원</option>
-					  	    <option value="경남">경남</option>
-                            <option value="경북">경북</option>
-					  	    <option value="전남">전남</option>
-                            <option value="전북">전북</option>
-					  	    <option value="충남">충남</option>
-                            <option value="충북">충북</option>
-                            <option value="대구">대구</option>
-                            <option value="부산">부산</option>
-                            <option value="울산">울산</option>
-                            <option value="인천">인천</option>
-                            <option value="제주">제주</option>
-                        </select>
-				    </div>
-                    <div className='save_button_wrap'>
-                        <button type="button" onClick={()=>handleSave()} className="btnMd btSave">수정</button>
-                    </div>
+              <div className='mypage-wrap'>
+                <div className='username font_bold'>{localStorage.getItem('username')} <span className='color_blue font_normal'>님의 마이페이지</span> </div>
+                <div className='change_password_wrap'>
+                    <div className='change_password'>비밀번호 변경</div>
+                    <div className='row'><input type="text" placeholder="현재 비밀번호"  defaultValue="" maxLength="20" onChange={handlePasswordNow}/></div>
+                    <div className='row'><input type="text" placeholder="새 비밀번호" defaultValue="" maxLength="20" onChange={handlePasswordNew}/></div>
+                    <div className='row'><input type="text" placeholder="새 비밀번호 확인" defaultValue="" maxLength="20" onChange={handlePasswordConfirm}/></div>
                 </div>
+                <div className='mt_30'></div>
+                <div className="select_region-wrap"> 
+                  <div className='select_region'>관심지역 변경</div>
+                  <select name="region" id="region" onChange={handleRegion} value={region}>
+                    <option value="서울">서울</option>
+					  	      <option value="경기">경기</option>
+                    <option value="강원">강원</option>
+					  	      <option value="경남">경남</option>
+                    <option value="경북">경북</option>
+					  	      <option value="전남">전남</option>
+                    <option value="전북">전북</option>
+					  	      <option value="충남">충남</option>
+                    <option value="충북">충북</option>
+                    <option value="대구">대구</option>
+                    <option value="부산">부산</option>
+                    <option value="울산">울산</option>
+                    <option value="인천">인천</option>
+                    <option value="제주">제주</option>
+                  </select>
+				        </div>
+                <div className='save_button_wrap'>
+                  <button type="button" onClick={()=>handleSave()} className="btnMd btSave">수정</button>
+                </div>
+              </div>
             </MypageContentBox>
             <div className='mt_30'></div>
         </MypageBody>

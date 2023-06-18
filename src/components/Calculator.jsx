@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import React,{useState} from 'react'
 import MainHeader from './MainHeader'
 import { Link } from 'react-router-dom'
+import Axios from 'axios'
 import ic_cal from '../assets/ic_cal.png'
 
 const CalculatorContainer=styled.div`
@@ -367,7 +368,7 @@ const Modal = styled.div`
 function Nav(){
   return <NavUl>
     <li><Link to="/recommend/calculator" className="navigation__link_now">가점계산기</Link></li>
-    <li><Link to="/recommend/strategy" className="navigation__link">추천전략</Link></li>
+    <li><Link to="/recommend/strategy" className="navigation__link">추천청약</Link></li>
   </NavUl>
 }
 
@@ -498,10 +499,16 @@ function Calculator() {
     };
 
     const handleSave = () => {
-      console.log(homePeriodVal);
-      console.log(familyNumVal);
-      console.log(accountPeriodVal);
-      console.log(homePeriodVal+familyNumVal+accountPeriodVal);
+      localStorage.setItem('totalValue',homePeriodVal+familyNumVal+accountPeriodVal);
+
+      Axios.post(
+        'http://13.124.229.36:8080/api/user/calculate?score='+(homePeriodVal+familyNumVal+accountPeriodVal),
+        {}, 
+        {
+          headers: {
+            Authorization : localStorage.getItem('accessToken')
+          }
+        })
     };
 
     return (
