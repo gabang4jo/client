@@ -71,6 +71,7 @@ function LogoFunc(){
 const logoutToken = () => {
   localStorage.removeItem('accessToken');
   localStorage.removeItem('username');
+  localStorage.removeItem('totalValue');
 }
 
 function Nav(){

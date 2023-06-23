@@ -125,7 +125,7 @@ const MypageContentBox = styled.div`
             height: 50px;
         }
 
-        input[type='text'] {
+        input[type='password'] {
             width: 400px;
             line-height: 16;
             height: 30px;
@@ -233,9 +233,9 @@ function Mypage() {
                 <div className='username font_bold'>{localStorage.getItem('username')} <span className='color_blue font_normal'>님의 마이페이지</span> </div>
                 <div className='change_password_wrap'>
                     <div className='change_password'>비밀번호 변경</div>
-                    <div className='row'><input type="text" placeholder="현재 비밀번호"  defaultValue="" maxLength="20" onChange={handlePasswordNow}/></div>
-                    <div className='row'><input type="text" placeholder="새 비밀번호" defaultValue="" maxLength="20" onChange={handlePasswordNew}/></div>
-                    <div className='row'><input type="text" placeholder="새 비밀번호 확인" defaultValue="" maxLength="20" onChange={handlePasswordConfirm}/></div>
+                    <div className='row'><input type="password" placeholder="현재 비밀번호"  defaultValue="" maxLength="20" onChange={handlePasswordNow}/></div>
+                    <div className='row'><input type="password" placeholder="새 비밀번호" defaultValue="" maxLength="20" onChange={handlePasswordNew}/></div>
+                    <div className='row'><input type="password" placeholder="새 비밀번호 확인" defaultValue="" maxLength="20" onChange={handlePasswordConfirm}/></div>
                 </div>
                 <div className='mt_30'></div>
                 <div className="select_region-wrap"> 
